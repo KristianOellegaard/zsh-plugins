@@ -22,3 +22,12 @@ Puts the virtualenv in $PWD/.venv/
     - ```work 1.3``` (it automatically deactivates if inside another venv)
 
 Puts the virtualenv inside $PWD/.venv-1.2/ and $PWD/.venv-1.3/
+
+
+Django
+------
+
+- manage.py
+    - ```dj```
+- manage.py runserver
+    - ```dr```
