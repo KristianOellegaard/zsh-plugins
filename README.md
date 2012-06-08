@@ -8,9 +8,9 @@ Virtualenv
 ----------
 
 - Make a virtualenv:
-    ```venv```
+    - ```venv```
 - Start working inside a virtualenv
-    ```work```
+    - ```work```
 
 Puts the virtualenv in $PWD/.venv/
 
