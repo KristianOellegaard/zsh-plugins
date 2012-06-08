@@ -29,5 +29,8 @@ Django
 
 - manage.py
     - ```dj```
+    - E.g. ```dj runserver``` or ```dj shell```
+    - Checks for manage.py, project/manage.py or bin/django (buildout)
 - manage.py runserver
     - ```dr```
+    - Checks for manage.py, project/manage.py or bin/django (buildout)
