@@ -22,3 +22,6 @@ function rt() {
 		echo "dj: $fg[red]Error:$reset_color Could not find runtests.sh or runtests.py"
 	fi
 }
+
+alias req="pip install -r requirements.txt"
+alias bs="venv && work && req"
