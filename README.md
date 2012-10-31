@@ -23,6 +23,9 @@ Puts the virtualenv in $PWD/.venv/
 
 Puts the virtualenv inside $PWD/.venv-1.2/ and $PWD/.venv-1.3/
 
+- Install requirements.txt
+    - ```req```
+
 
 Django
 ------
