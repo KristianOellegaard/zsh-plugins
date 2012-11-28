@@ -12,6 +12,8 @@ function work() {
 		source bin/activate
 	elif [ -f .venv/bin/activate ]; then
 		source .venv/bin/activate
+	elif [ ! -z $2 ]; then
+		source .venv-$1-$2/bin/activate
 	elif [ ! -z $1 ]; then
 		source .venv-$1/bin/activate
 	else
@@ -24,9 +26,15 @@ compctl -K _work work
 
 
 function venv() {
-	if [ ! -z $1 ]; then
-		virtualenv --prompt "(${PWD##*/}-$1) " .venv-$1
+	if [ ! -z $2 ]; then
+		PYTHON_VERSION=$2
 	else
-		virtualenv --prompt "(${PWD##*/}) " .venv
+		PYTHON_VERSION="`python -c "import sys; print(sys.version.split('(')[0]).replace(' ', '').rsplit('.', 1)[0]"`"
+	fi
+	VERSION_NAME="${fg[cyan]}Py${fg[yellow]}${PYTHON_VERSION}$reset_color"
+	if [ ! -z $1 ]; then
+		virtualenv --prompt "(${PWD##*/}-$1 | ${VERSION_NAME}) " --python=python$PYTHON_VERSION .venv-$1-$PYTHON_VERSION
+	else
+		virtualenv --prompt "(${PWD##*/} | ${VERSION_NAME}) " .venv
 	fi
 }
