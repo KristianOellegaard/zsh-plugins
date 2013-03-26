@@ -15,7 +15,7 @@ alias dr='dj runserver'
 
 function rt() {
 	if [ -f runtests.sh ]; then
-		runtests.sh $*
+		./runtests.sh $*
 	elif [ -f runtests.py ]; then
 		python runtests.py $*
 	else

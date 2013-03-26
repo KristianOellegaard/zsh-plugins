@@ -26,15 +26,16 @@ compctl -K _work work
 
 
 function venv() {
-	if [ ! -z $2 ]; then
+	if [[ ! -z $2 && -z $PYTHON_VERSION ]]; then
 		PYTHON_VERSION=$2
-	else
+	elif [[ -z $PYTHON_VERSION ]]; then
 		PYTHON_VERSION="`python -c "import sys; print(sys.version.split('(')[0]).replace(' ', '').rsplit('.', 1)[0]"`"
 	fi
+	echo "Using python version ${PYTHON_VERSION}"
 	VERSION_NAME="${fg[cyan]}Py${fg[yellow]}${PYTHON_VERSION}$reset_color"
 	if [ ! -z $1 ]; then
 		virtualenv --prompt "(${PWD##*/}-$1 | ${VERSION_NAME}) " --python=python$PYTHON_VERSION .venv-$1-$PYTHON_VERSION
 	else
-		virtualenv --prompt "(${PWD##*/} | ${VERSION_NAME}) " .venv
+		virtualenv --prompt "(${PWD##*/} | ${VERSION_NAME}) " --python=python$PYTHON_VERSION .venv
 	fi
 }
