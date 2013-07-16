@@ -1,11 +1,12 @@
-
 function dj() {
 	if [ -f bin/django ]; then
-		bin/django $*
+		bin/django $* # Buildout
+	elif [ -f src/manage.py ]; then
+		python src/manage.py # src/ folder
 	elif [ -f project/manage.py ]; then
-		python project/manage.py $*
+		python project/manage.py $* # django default
 	elif [ -f manage.py ]; then
-		python manage.py $*
+		python manage.py $* # plain
 	else
 		echo "dj: $fg[red]Error:$reset_color Could not find manage.py or buildout"
 	fi
