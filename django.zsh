@@ -24,5 +24,14 @@ function rt() {
 	fi
 }
 
-alias req="pip install -r requirements.txt"
+function req() {
+	if [ -f requirements.txt ]; then
+		pip install -r requirements.txt
+	elif [ -f setup.py ]; then
+		python setup.py develop
+	else
+		echo "dj: $fg[red]Error:$reset_color Could not find requirements.txt or setup.py"
+	fi
+}
+
 alias bs="venv && work && req"
