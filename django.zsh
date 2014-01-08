@@ -19,6 +19,8 @@ function rt() {
 		./runtests.sh $*
 	elif [ -f runtests.py ]; then
 		python runtests.py $*
+	elif [ -f scripts/runtests.sh ]; then
+		./scripts/runtests.sh $*
 	else
 		echo "dj: $fg[red]Error:$reset_color Could not find runtests.sh or runtests.py"
 	fi
