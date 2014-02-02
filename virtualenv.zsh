@@ -10,12 +10,12 @@ function work() {
 	fi
 	if [ -f bin/activate ]; then
 		source bin/activate
-	elif [ -f .venv/bin/activate ]; then
-		source .venv/bin/activate
 	elif [ ! -z $2 ]; then
 		source .venv-$1-$2/bin/activate
 	elif [ ! -z $1 ]; then
 		source .venv-$1/bin/activate
+	elif [ -f .venv/bin/activate ]; then
+		source .venv/bin/activate
 	else
 		echo "work: $fg[red]Error:$reset_color Could not find venv $1"
 		echo "You currently have the following venvs"
@@ -26,6 +26,13 @@ compctl -K _work work
 
 
 function venv() {
+    if [[ ! -z $1 && ($1 == "-h" || $1 == "--help") ]]; then
+        echo "venv"
+        echo "usage: venv <name> <python-version>"
+        echo ""
+        echo "Override python-version with PYTHON_VERSION environment variable"
+        return 1
+    fi
 	if [[ ! -z $2 && -z $PYTHON_VERSION ]]; then
 		PYTHON_VERSION=$2
 	elif [[ -z $PYTHON_VERSION ]]; then
