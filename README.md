@@ -40,3 +40,17 @@ Django
 - manage.py runserver
     - ```dr```
     - Checks for manage.py, project/manage.py or bin/django (buildout)
+
+
+Install
+=======
+
+Symlink the directories into ~/.oh-my-zsh/custom/
+
+E.g.: 
+```bash
+ln -s django ~/.oh-my-zsh/custom/django
+ln -s virtualenv ~/.oh-my-zsh/custom/virtualenv
+```
+
+
