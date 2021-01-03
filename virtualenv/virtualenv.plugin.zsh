@@ -36,7 +36,7 @@ function venv() {
 	if [[ ! -z $2 && -z $PYTHON_VERSION ]]; then
 		PYTHON_VERSION=$2
 	elif [[ -z $PYTHON_VERSION ]]; then
-		PYTHON_VERSION="`python3 -c "import sys; print(sys.version.split('(')[0]).replace(' ', '').rsplit('.', 1)[0]"`"
+		PYTHON_VERSION="`python3 -c "import sys; print(sys.version.split('(')[0].replace(' ', '').rsplit('.', 1)[0])"`"
 	fi
 	echo "Using python version ${PYTHON_VERSION}"
 	VERSION_NAME="${fg[cyan]}Py${fg[yellow]}${PYTHON_VERSION}$reset_color"
